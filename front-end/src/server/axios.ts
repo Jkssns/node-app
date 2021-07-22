@@ -4,30 +4,19 @@ let token = '';
 var CancelToken = axios.CancelToken;
 var source = CancelToken.source();
 
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = 'http://10.0.0.62:3000'
 
-axios.interceptors.request.use(function(config) {
+axios.interceptors.request.use(function(config: any) {
     return config;
-}, function(error) {
+}, function(error: any) {
     return Promise.reject(error);
 });
 
-axios.interceptors.response.use(function(response) {
+axios.interceptors.response.use(function(response: any) {
     return response.data;
-}, function(error) {
+}, function(error: any) {
     return Promise.reject(error);
 });
-
-interface AxiosParams {
-    url: string;
-    method: string;
-    timeout: number;
-    data: any;
-    params: any;
-    cancelToken: string;
-    headers: any;
-    responseType: string;
-}
 
 export default function(url: string, {
     method = 'get',
