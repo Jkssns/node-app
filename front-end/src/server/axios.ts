@@ -20,7 +20,7 @@ axios.interceptors.response.use(function(response: any) {
 
 export default function(url: string, {
     method = 'get',
-    timeout = 10000,
+    timeout = 100000,
     data = {},
     cancelToken = '',
     headers = {

@@ -1,21 +1,18 @@
 import axios from './axios.ts';
 
-interface AxiosParams {
-    url: string;
-    method: string;
-    timeout: number;
-    data: any;
-    params: any;
-    cancelToken: string;
-    headers: any;
-    responseType: string;
-}
-
 export default {
-    login(data: AxiosParams) {
+    login(data: any) {
         return axios('/login', {
             method: 'post',
-            data: data
+            data: data,
+        })
+    },
+
+    userList(data: any) {
+        console.log("data::: ", data);
+        return axios('/user', {
+            method: 'get',
+            data: data,
         })
     },
 }

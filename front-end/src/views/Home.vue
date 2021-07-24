@@ -11,7 +11,7 @@ export default defineComponent({
 	setup: () => {
         const { proxy } = getCurrentInstance()
 
-        proxy.$server.login({ user: '123', password: '123132' }).then(res => {
+        proxy.$server.userList({id: '60fab7c19b1a698890d178e5'}).then(res => {
             console.log("res::: ", res);
         })
     },
