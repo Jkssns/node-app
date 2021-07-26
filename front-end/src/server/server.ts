@@ -8,9 +8,36 @@ export default {
         })
     },
 
+    register(data: any) {
+        return axios('/register', {
+            method: 'post',
+            data,
+        })
+    },
+
     userList(data: any) {
-        console.log("data::: ", data);
-        return axios('/user', {
+        return axios('/user/list', {
+            method: 'get',
+            data: data,
+        })
+    },
+
+    addUser(data: any) {
+        return axios('/user/add', {
+            method: 'get',
+            data: data,
+        })
+    },
+
+    delUser(data: any) {
+        return axios('/user/delete', {
+            method: 'get',
+            data: data,
+        })
+    },
+
+    updateUser(data: any) {
+        return axios('/user/update', {
             method: 'get',
             data: data,
         })
