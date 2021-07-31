@@ -18,7 +18,7 @@ export default {
     userList(data: any) {
         return axios('/user/list', {
             method: 'get',
-            data: data,
+            data
         })
     },
 
@@ -42,4 +42,15 @@ export default {
             data: data,
         })
     },
+
+    addMsg(data: any) {
+        return axios('/msg/add', {
+            method: 'get',
+            data: data,
+        })
+    },
 }
+
+
+
+

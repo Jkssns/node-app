@@ -4,6 +4,17 @@ var User = require('../models/user');
 
 /* 用户列表 */
 router.get('/list', async (req, res, next) => {
+    User.find({}, (err, obj) => {
+        if (!err) {
+            res.send({ code: 200, msg: 'ok', data: obj });
+        } else {
+            res.send({ code: 200, msg: '查无此人' });
+        }
+    });
+});
+
+/* 用户详情 */
+router.get('/detail', async (req, res, next) => {
     if (req.query.id) {
         User.findOne({ _id: req.query.id + 'asdfa' }, (err, obj) => {
             if (!err) {
@@ -18,7 +29,7 @@ router.get('/list', async (req, res, next) => {
 /* 添加用户 */
 router.post('/add', async (req, res, next) => {
     if (req.query.id) {
-        User.findOne({ _id: req.query.id + 'asdfa' }, (err, obj) => {
+        User.insertOne({ _id: req.query.id + 'asdfa' }, (err, obj) => {
             if (!err) {
                 res.send({ code: 200, msg: 'ok', data: obj });
             } else {
