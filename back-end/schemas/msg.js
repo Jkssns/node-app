@@ -1,4 +1,6 @@
 var mongoose = require('mongoose')
+var ObjectId = mongoose.Types.ObjectId
+
 var MsgSchema = new mongoose.Schema({
     msg: {
         type: String,
@@ -10,9 +12,9 @@ var MsgSchema = new mongoose.Schema({
         default: 0,
     }, // 点赞
     createDate: {
-        type: Date, 
-        default: Date.now,
-    }
-});
+        type: Number,
+        default: Date.now(),
+    },
+}, {versionKey: false});
 
 module.exports = MsgSchema

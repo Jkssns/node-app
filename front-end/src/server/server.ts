@@ -45,7 +45,28 @@ export default {
 
     addMsg(data: any) {
         return axios('/msg/add', {
+            method: 'post',
+            data: data,
+        })
+    },
+
+    msgList(data: any) {
+        return axios('/msg/list', {
             method: 'get',
+            data: data,
+        })
+    },
+
+    msgDelete(data: any) {
+        return axios('/msg/delete', {
+            method: 'delete',
+            data: data,
+        })
+    },
+
+    msgDeleteAll(data: any) {
+        return axios('/msg/deleteAll', {
+            method: 'delete',
             data: data,
         })
     },
