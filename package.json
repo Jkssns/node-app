@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "ant-design-vue": "^2.2.2"
+  },
+  "devDependencies": {
+    "sass": "^1.38.0"
   }
 }

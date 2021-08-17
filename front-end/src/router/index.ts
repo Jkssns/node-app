@@ -2,11 +2,16 @@ import {
     createRouter,
     createWebHistory,
 } from 'vue-router'
+import Resume from '@/views/Resume.vue'
 
-const routes = [
+const routes:any = [
     {
         path: '/',
-        component: () => import('@/views/Home.vue'),
+        redirect: '/resume',
+    },
+    {
+        path: '/resume',
+        component: Resume,
     },
 ]
 
