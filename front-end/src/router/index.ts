@@ -4,7 +4,7 @@ import {
 } from 'vue-router'
 import Resume from '@/views/Resume.vue'
 
-const routes:any = [
+export const routes:any = [
     {
         path: '/',
         redirect: '/resume',

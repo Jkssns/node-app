@@ -2,18 +2,18 @@
         <header>
             <img src="https://img0.baidu.com/it/u=3311900507,1448170316&fm=26&fmt=auto&gp=0.jpg" alt="">
 
-            <div class="header__right">
-                123132
-            </div>
+            <nav>
+                <li v-for="item in routes" :key="item.path" @click="routerTo">{{$t(item.name)}}</li>
+            </nav>
         </header>
 
         <main>
-            <ul>
-                <!-- <li @click="scrollTo('shui')">自我介绍</li>
+            <!-- <ul>
+                <li @click="scrollTo('shui')">自我介绍</li>
                 <li @click="scrollTo('sha')">工作经历</li>
                 <li @click="scrollTo('neng')">技能点数</li>
                 <li @click="scrollTo('xiang')">展望</li>
-                <li @click="scrollTo('shuo')">吐槽</li> -->
+                <li @click="scrollTo('shuo')">吐槽</li>
                 <li @click="scrollTo('resume')">1111111</li>
                 <li @click="scrollTo('workList')">2222222</li>
                 <li @click="scrollTo('skill')">333333333</li>
@@ -32,7 +32,7 @@
                         333333333
                     </li>
                 </ol>
-            </div>
+            </div> -->
         </main>
 
         <footer>
@@ -42,14 +42,22 @@
 
 <script lang="ts" setup>
     import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
+	import { routes } from '@/router/index.ts';
     const { proxy } = getCurrentInstance()
+
+	console.log(routes)
 
     onBeforeMount(() => {
 
     })
     
     const state = reactive({
-
+        routes: [
+            { name: '我的简历', path: '' },
+            { name: '', path: '' },
+            { name: '', path: '' },
+            { name: '', path: '' },
+        ]
     })
 
     const scrollTo = (type) => {
