@@ -4,7 +4,7 @@ let token = '';
 var CancelToken = axios.CancelToken;
 var source = CancelToken.source();
 
-axios.defaults.baseURL = 'http://10.0.0.62:3000'
+axios.defaults.baseURL = 'http://10.0.0.42:3000'
 
 axios.interceptors.request.use(function(config: any) {
     return config;
@@ -22,6 +22,7 @@ export default function(url: string, {
     method = 'get',
     timeout = 100000,
     data = {},
+    params = {},
     cancelToken = '',
     headers = {
         'Content-Type': 'application/json'
@@ -33,7 +34,7 @@ export default function(url: string, {
         timeout: timeout,
         url: url,
         data: data,
-        params: data,
+        params: params,
         canelToken: cancelToken, // 关闭请求
         headers: headers,
         responseType: responseType

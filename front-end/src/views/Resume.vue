@@ -1,9 +1,9 @@
 <template>
         <header>
-            <img src="https://img0.baidu.com/it/u=3311900507,1448170316&fm=26&fmt=auto&gp=0.jpg" alt="">
+            <!-- <img src="https://img0.baidu.com/it/u=3311900507,1448170316&fm=26&fmt=auto&gp=0.jpg" alt=""> -->
 
             <nav>
-                <li v-for="item in routes" :key="item.path" @click="routerTo">{{$t(item.name)}}</li>
+                <!-- <li v-for="item in routes" :key="item.path" @click="routerTo">{{$t(item.name)}}</li> -->
             </nav>
         </header>
 
@@ -33,6 +33,9 @@
                     </li>
                 </ol>
             </div> -->
+
+
+            <button style="height: 50px;width: 100px;color: black;" @click="like('post')">点赞{{state.likeMe}}</button>
         </main>
 
         <footer>
@@ -43,9 +46,7 @@
 <script lang="ts" setup>
     import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
 	import { routes } from '@/router/index.ts';
-    const { proxy } = getCurrentInstance()
-
-	console.log(routes)
+    import apis from '@/server/apis.ts'
 
     onBeforeMount(() => {
 
@@ -57,14 +58,21 @@
             { name: '', path: '' },
             { name: '', path: '' },
             { name: '', path: '' },
-        ]
+        ],
+        likeMe: 0,
     })
 
     const scrollTo = (type) => {
         document.getElementById(type).scrollIntoView({behavior: 'smooth', block: 'end'})
     }
 
-    
+    const like = (method) => {
+        apis.like(method, {like: ++state.likeMe}).then(res => {
+            state.likeMe = res.data.like
+        })
+    }
+
+    like('get')
 </script>
 
 <style lang="scss" scoped>
