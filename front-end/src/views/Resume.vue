@@ -1,46 +1,17 @@
 <template>
-        <header>
-            <!-- <img src="https://img0.baidu.com/it/u=3311900507,1448170316&fm=26&fmt=auto&gp=0.jpg" alt=""> -->
+    <div class="box_container">
+        <div class="my__box">
+            <img class="my__avatar" src="https://jkssns.oss-cn-hangzhou.aliyuncs.com/images/bear.jpg" />
+            <div class="my__info pinyin">
+                <p class="my__info__name">张钧</p>
+                <p class="my__info__title">前端工程师</p>
+            </div>
+        </div>
 
-            <nav>
-                <!-- <li v-for="item in routes" :key="item.path" @click="routerTo">{{$t(item.name)}}</li> -->
-            </nav>
-        </header>
-
-        <main>
-            <!-- <ul>
-                <li @click="scrollTo('shui')">自我介绍</li>
-                <li @click="scrollTo('sha')">工作经历</li>
-                <li @click="scrollTo('neng')">技能点数</li>
-                <li @click="scrollTo('xiang')">展望</li>
-                <li @click="scrollTo('shuo')">吐槽</li>
-                <li @click="scrollTo('resume')">1111111</li>
-                <li @click="scrollTo('workList')">2222222</li>
-                <li @click="scrollTo('skill')">333333333</li>
-                <li @click="scrollTo('hope')">44444444444</li>
-                <li @click="scrollTo('BB')">555555555</li>
-            </ul>
-            <div>
-                <ol>
-                    <li id="resume">
-                        1111111
-                    </li>
-                    <li id="workList">
-                        2222222
-                    </li>
-                    <li id="skill">
-                        333333333
-                    </li>
-                </ol>
+            <!-- <div class="my__right">
+                <button style="height: 50px;width: 100px;color: black;" @click="like('post')">点赞{{state.likeMe}}</button>
             </div> -->
-
-
-            <button style="height: 50px;width: 100px;color: black;" @click="like('post')">点赞{{state.likeMe}}</button>
-        </main>
-
-        <footer>
-
-        </footer>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -49,7 +20,7 @@
     import apis from '@/server/apis.ts'
 
     onBeforeMount(() => {
-
+        like('get')
     })
     
     const state = reactive({
@@ -67,66 +38,53 @@
     }
 
     const like = (method) => {
-        apis.like(method, {like: ++state.likeMe}).then(res => {
+        apis.like(method, {like: state.likeMe + 1}).then(res => {
             state.likeMe = res.data.like
         })
     }
 
-    like('get')
 </script>
 
 <style lang="scss" scoped>
-    // .resume_wrapper {
-    //     width: 1200px;
-    // }
-
-    header {
+    .box_container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        height: 70px;
-        padding: 0 15%;
-        background: #121212;
-
-        img {
-            width: auto;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .header__right {
-            color: red;
-        }
+        width: 100%;
+        height: 100%;
+        background: #1a1a1d url(https://jkssns.oss-cn-hangzhou.aliyuncs.com/images/smash-fake.png) no-repeat;
+        background-size: auto 100%;
+        background-position: center;
     }
 
-    main {
+    .my__box {
         display: flex;
-        margin: 0 auto;
-        height: calc(100% - 70px);
-        background: #121212;
-        width: 80%;
-        ul {
-            width: 200px;
-            li {
-                width: 100%;
-                display: inline-block;
-                height: 50px;
-                text-align: center;
-                line-height: 50px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-                cursor: pointer;
-            }
+        flex-wrap: wrap;
+        justify-content: center;
+        .my__avatar {
+            width: auto;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 12px;
         }
-
-        ol {
-            background: #f8f8f8;
-            width: 500px;
-            height: 100%;
-            color: red;
-            overflow: auto;
-            li {
-                height: 100%;
+        .my__info {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            .my__info__name {
+                font-size: 80px;
+            }
+            .my__info__title {
+                margin-top: 12px;
+                font-weight: lighter;
+                color: rgba(255, 255, 255, 0.8);
             }
         }
     }
+
+    //     .my__right {
+    //         color: red;
+    //     }
+
 </style>

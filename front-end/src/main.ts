@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import router from './router/index'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
+import '@/assets/css/reset.css'
 
 import App from './App.vue'
 
@@ -14,7 +15,6 @@ app.mount('#app')
 // import storage from '@/utils/storage.js'
 // import config from '@/config.js'
 // import store from '@/store/index'
-// 
 
 /* 插件 */
 

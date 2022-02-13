@@ -3,8 +3,6 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AButton: typeof import('ant-design-vue/es')['Button']
-    ATextarea: typeof import('ant-design-vue/es')['Textarea']
     GlobalLayout: typeof import('./src/components/GlobalLayout.vue')['default']
   }
 }

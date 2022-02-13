@@ -4,7 +4,7 @@ let token = '';
 var CancelToken = axios.CancelToken;
 var source = CancelToken.source();
 
-axios.defaults.baseURL = 'http://10.0.0.42:3000'
+axios.defaults.baseURL = 'http://192.168.31.222:3000'
 
 axios.interceptors.request.use(function(config: any) {
     return config;
