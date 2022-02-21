@@ -13,7 +13,6 @@
     })
     
     const state = reactive({
-
     })
 </script>
 
