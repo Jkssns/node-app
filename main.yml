@@ -17,4 +17,6 @@ jobs:
     - name: npm install, build
       run: |
         cd front-end
+        npm install
+        npm run build
       shell: bash
