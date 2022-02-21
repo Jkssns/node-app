@@ -17,16 +17,4 @@ jobs:
     - name: npm install, build
       run: |
         cd front-end
-        npm install
-        npm run build
-    - name: Create gh-pages
-      run: |
-            cd dist
-            ln -s index.html 404.html
-            git config --global user.email "action@example.com"
-            git config --global user.name "action"
-            git init
-            git add .
-            git commit -m '2384181612843'
-            git push -f https://Jkssns:${{ secrets.GITHUB_TOKEN }}@github.com/Jkssns/test-action-vue.git master:gh-pages
       shell: bash
