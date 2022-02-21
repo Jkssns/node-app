@@ -15,8 +15,6 @@
     const state = reactive({
 
     })
-
-    
 </script>
 
 <style> 

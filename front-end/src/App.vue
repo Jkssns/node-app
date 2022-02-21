@@ -21,7 +21,5 @@ export default defineComponent({
     #app {
         width: 100%;
         height: 100%;
-        background: #222222;
-        color: #fff;
     }
 </style>
