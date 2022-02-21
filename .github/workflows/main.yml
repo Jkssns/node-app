@@ -17,7 +17,9 @@ jobs:
 
     - name: npm install, build
       run: |
+        pwd
         cd front-end
+        pwd
         npm install
         npm run build
     - name: Create gh-pages
