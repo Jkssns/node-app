@@ -20,28 +20,17 @@
 
 <script lang="ts" setup>
     import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
-	import { routes } from '@/router/index.ts';
-    import apis from '@/server/apis.ts'
+    import apis from '../server/apis'
 
     onBeforeMount(() => {
         like('get')
     })
     
     const state = reactive({
-        routes: [
-            { name: '我的简历', path: '' },
-            { name: '', path: '' },
-            { name: '', path: '' },
-            { name: '', path: '' },
-        ],
         likeMe: 0,
     })
 
-    const scrollTo = (type) => {
-        document.getElementById(type).scrollIntoView({behavior: 'smooth', block: 'end'})
-    }
-
-    const like = (method) => {
+    const like = (method: string) => {
         apis.like(method, {like: state.likeMe + 1}).then(res => {
             state.likeMe = res.data.like
         })

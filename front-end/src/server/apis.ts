@@ -1,4 +1,4 @@
-import axios from './axios.ts';
+import axios from './axios';
 
 interface like {
     method: string
@@ -12,7 +12,6 @@ export default {
             data,
         })
     },
-
 }
 
 

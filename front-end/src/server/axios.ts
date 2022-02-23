@@ -39,6 +39,6 @@ export default function(url: string, {
         headers: headers,
         responseType: responseType
     };
-    return axios(config);
+    return axios(config as any);
 }
 

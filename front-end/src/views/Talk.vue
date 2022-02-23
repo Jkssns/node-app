@@ -5,16 +5,16 @@
 </template>
 
 <script lang="ts" setup>
-    import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
-    const { proxy } = getCurrentInstance()
+    // import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
+    // const { proxy } = getCurrentInstance()
 
-    onBeforeMount(() => {
+    // onBeforeMount(() => {
 
-    })
+    // })
     
-    const state = reactive({
+    // const state = reactive({
         
-    })
+    // })
 </script>
 
 <style> 
