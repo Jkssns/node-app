@@ -21,6 +21,7 @@
 <script lang="ts" setup>
     import { ref, defineComponent, getCurrentInstance, onBeforeMount, reactive } from "vue";
     import apis from '../server/apis'
+    console.log("apis::: ", apis);
 
     onBeforeMount(() => {
         like('get')
