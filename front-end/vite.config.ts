@@ -10,7 +10,7 @@ function _resolve(dir) {
 export default ({mode}) => {
 
 	return defineConfig({
-		base: mode === 'development' ? '/' : '/node-app/',
+		// base: mode === 'development' ? '/' : '/node-app/',
 		plugins: [
 			vue(),
 		],
