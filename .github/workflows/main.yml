@@ -24,6 +24,7 @@ jobs:
         npm run build
     - name: Create gh-pages
       run: |
+            cd front-end
             cd dist
             ln -s index.html 404.html
             git config --global user.email "action@example.com"
