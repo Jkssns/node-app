@@ -9,7 +9,7 @@ function _resolve(dir) {
 // https://vitejs.dev/config/
 export default ({mode}) => {
 	return defineConfig({
-		base: mode === 'development' ? '/' : '/node-app/',
+		base: '/',
 		plugins: [
 			vue(),
 		],
