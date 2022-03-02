@@ -4,7 +4,7 @@ let token = '';
 var CancelToken = axios.CancelToken;
 var source = CancelToken.source();
 
-axios.defaults.baseURL = 'https://umbom699.dongtaiyuming.net'
+axios.defaults.baseURL = 'http://localhost:7001'
 
 axios.interceptors.request.use(function(config: any) {
     return config;
