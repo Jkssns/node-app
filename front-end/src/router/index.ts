@@ -4,15 +4,20 @@ import {
     createWebHashHistory,
 } from 'vue-router'
 import Resume from '@/views/Resume.vue'
+import test from '@/views/test.vue'
 
 export const routes:any = [
     {
         path: '/',
-        redirect: '/resume',
+        redirect: '/test',
     },
     {
         path: '/resume',
         component: Resume,
+    },
+    {
+        path: '/test',
+        component: () => import('@/views/test.vue'),
     },
 ]
 
