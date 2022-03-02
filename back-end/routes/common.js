@@ -3,32 +3,29 @@ var router = express.Router();
 var Common = require('../models/common');
 
 /* 获得赞 */
-router.get('/like', async (req, res, next) => {
-    Common.findOne({_id: '6208d96e5b1cd00d6037608e'}, (err, data) => {
-        if (!err) {
-            res.send(global.code(200, data));
-        } else {
-            res.send(global.code(500, err));
-        }
-    });
+router.get('/like',  (req, res, next) => {
+    try{
+        Common.get('hello',(err,v)=>{
+            res.send(200,v)
+        })
+    }catch(err){
+        console.log(err);
+    }
+    
 });
 
 /* 更新赞 */
-router.post('/like', async (req, res, next) => {
-    Common.findOneAndUpdate({_id: '6208d96e5b1cd00d6037608e'}, {like: req.body.like}, {new: true}, (err, data) => {
-        if (!err) {
-            res.send(global.code(200, data));
-        } else {
-            res.send(global.code(500, err));
-        }
-    });
-    // Common.create( {like: req.body.like}, (err, data) => {
-    //     if (!err) {
-    //         res.send(global.code(200, data));
-    //     } else {
-    //         res.send(global.code(500, err));
-    //     }
-    // });
+router.post('/like',  (req, res, next) => {
+    try{
+        Common.incr('hello',function(err,data){
+            Common.get('hello',(err,v)=>{
+                res.send(200,v)
+            })
+        })
+        
+    }catch(err){
+        console.log(err);
+    }
 });
 
 module.exports = router;

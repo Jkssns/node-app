@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-var CommonSchema = require('../schemas/common')
-var Common = mongoose.model('Common', CommonSchema)
+var redis = require('redis')
+const client = redis.createClient( 6379, '39.97.106.72');
+const util = require('util');
 
-module.exports = Common
+module.exports = client

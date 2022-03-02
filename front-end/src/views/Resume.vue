@@ -1,20 +1,6 @@
 <template>
     <div class="box_container">
-        <div class="my__box">
-            <img class="my__avatar" src="https://jkssns.oss-cn-hangzhou.aliyuncs.com/images/bear.jpg" />
-            <div class="my__info pinyin">
-                <p class="my__info__name">张钧</p>
-                <p class="my__info__title">前端工程师</p>
-            </div>
-        </div>
-
-        <!-- <div class="box">
-            1
-        </div>
-
-        <div class="box">
-            2
-        </div> -->
+        <button @click="post">add</button>
     </div>
 </template>
 
@@ -34,6 +20,10 @@
         apis.like(method, {like: state.likeMe + 1}).then(res => {
             state.likeMe = res.data.like
         })
+    }
+
+    const post = () => {
+        like('post')
     }
 
 </script>
