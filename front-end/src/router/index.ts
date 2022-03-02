@@ -1,6 +1,7 @@
 import {
     createRouter,
     createWebHistory,
+    createWebHashHistory,
 } from 'vue-router'
 import Resume from '@/views/Resume.vue'
 
@@ -16,7 +17,8 @@ export const routes:any = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
+    // history: createWebHistory(),
     routes,
     // scrollBehavior(to, from, savedPosition) {
     //     return {
