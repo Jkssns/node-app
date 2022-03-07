@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var Common = require('../models/common');
+var { redis, code } = global
 
 /* 获得赞 */
 router.get('/like',  (req, res, next) => {
     try{
-        Common.get('hello',(err,v)=>{
-            res.send(200,v)
+        redis.get('like', (err, like) => {
+            res.send(code(200, { like: +like }))
         })
     }catch(err){
         console.log(err);
@@ -16,14 +16,13 @@ router.get('/like',  (req, res, next) => {
 
 /* 更新赞 */
 router.post('/like',  (req, res, next) => {
-    try{
-        Common.incr('hello',function(err,data){
-            Common.get('hello',(err,v)=>{
-                res.send(200,v)
+    try {
+        redis.incr('like', function(err, data) {
+            redis.get('like', (err, like) => {
+                res.send(code(200, {like: +like}))
             })
         })
-        
-    }catch(err){
+    } catch(err) {
         console.log(err);
     }
 });

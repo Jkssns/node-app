@@ -11,7 +11,6 @@ var usersRouter = require('./routes/users');
 var commonRouter = require('./routes/common');
 var fileRouter = require('./routes/file');
 
-
 var app = express();
 app.all('*', function (req, res, next) {
     //设置允许跨域的域名，*代表允许任意域名跨域
@@ -35,7 +34,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
