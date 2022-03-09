@@ -8,18 +8,13 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "lib": ["esnext", "dom"]
-    },
-    "paths": {
-        "@/*": ["src/*"],
-        "@/views/*": ["src/views/*"],
-        "@/components/*": ["src/components/*"],
-        "@/assets/*": ["src/assets/*"],
-        "@/utils/*": ["src/utils/*"],
-        "@/api/*": ["src/api/*"]
+        "lib": ["esnext", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+        },
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-
     // 排除不需要 TypeScript 校验的文件
     "exclude": ["node_modules"]
 }

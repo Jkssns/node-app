@@ -14,10 +14,12 @@ export default ({mode}) => {
 			vue(),
 		],
 		resolve: {
-			alias: {
-				"@": _resolve("src"),
-				'@assets': _resolve('./src/assets/images'),
-			},
+			alias: [
+				{
+					find: '@',
+					replacement: _resolve('src')
+				},
+			]
 		},
 		server: {
 			port: 8080,
