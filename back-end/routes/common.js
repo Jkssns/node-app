@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var { redis, code } = global
 
-/* 获得赞 */
+/* 获取赞 */
 router.get('/like',  (req, res, next) => {
     try{
         redis.get('like', (err, like) => {
@@ -11,7 +11,6 @@ router.get('/like',  (req, res, next) => {
     }catch(err){
         console.log(err);
     }
-    
 });
 
 /* 更新赞 */

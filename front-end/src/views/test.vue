@@ -1,18 +1,22 @@
 <template>
-    <div class="open_container" @click="state.open = !state.open">
-        <section class="door_left" :class="{ slide_left: state.open }"></section>
+    <div class="open_container pinyin">
+        <section class="door_left" v-if="state.showDoor" :class="{ slide_left: state.open }">
+            <p class="door_name">张</p>
+            <span class="door_title">前端</span>
+        </section>
 
-        <section class="door_right" :class="{ slide_right: state.open }" @click.stop="slide"></section>
+        <section class="door_right" v-if="state.showDoor" :class="{ slide_right: state.open }" @click.stop="slide">
+            <p class="door_name">钧</p>
+            <span class="door_title">开发</span>
+        </section>
 
-        <!-- <div id="avatar_wrapper" @mousedown="onMousedown" @click="onClick">
-			<img class="avatar" draggable="false" src="https://img2.baidu.com/it/u=690487400,3736912659&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=675" alt="">
-		</div> -->
+        <div id="avatar_wrapper" :class="state.avatarClass" @mousedown="onMousedown" @click="onClick">
+			<img class="avatar" draggable="false" src="https://jkssns.oss-cn-hangzhou.aliyuncs.com/images/bear.jpg" alt="">
+		</div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import a from '@/server/a.ts'
-console.log(a, 'aaa')
 import { ref, defineComponent, getCurrentInstance, onBeforeMount, onMounted, nextTick, reactive } from 'vue'
 
 const state = reactive({
@@ -24,6 +28,9 @@ const state = reactive({
     timer: null,
     move: false,
     avatar: null,
+    showDoor: true,
+    clickDoor: false, // 是否能点击门
+    avatarClass: '', // 头像动态css
 })
 
 onMounted(() => {
@@ -32,8 +39,11 @@ onMounted(() => {
     })
 })
 
-const slide = () => {
+const openDoor = () => {
     state.open = !state.open
+    setTimeout(() => {
+        state.showDoor = false
+    }, 2000)
 }
 
 const onMousedown = ev => {
@@ -105,6 +115,12 @@ const startMove = () => {
         }
         if (state.iSpeedX == 0 && state.iSpeedY == 0 && nowY == document.documentElement.clientHeight - state.avatar.offsetHeight) {
             clearInterval(state.timer)
+            state.clickDoor = true
+            state.avatarClass = 'opacity'
+            setTimeout(() => {
+                state.avatarClass = 'none'
+                openDoor()
+            }, 2000)
         }
         state.avatar.style.left = nowX + 'px'
         state.avatar.style.top = nowY + 'px'
@@ -116,9 +132,9 @@ const startMove = () => {
 .open_container {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     overflow: hidden;
     .door_left,
     .door_right {
@@ -129,20 +145,31 @@ const startMove = () => {
         transform-origin: left center;
         transform-style: preserve-3d;
         backface-visibility: hidden;
-        transition: all 3s ease;
-
-    }
-    .door_right {
-        transform-origin: right center;
+        transition: transform 3s ease;
+        background-color: rgba(0, 0, 0, 0.85);
+        background-size: cover;
+        background-repeat: no-repeat;
+        .door_name {
+            margin-top: 65%;
+            font-size: 60px;
+            color: #fff;
+        }
+        .door_title {
+            margin-top: 50px;
+            font-size: 35px;
+            color: rgba(255, 255, 255, 0.8);
+        }
     }
     .door_left {
-		background:  url(~@/assets/images/left_bg.png) no-repeat;
+        text-align: right;
+        background-image: url(../assets/images/left_bg.png);
 		&.slide_left {
 			animation: slideLeft 2s linear;
 		}
 	}
     .door_right {
-		background:  url(~@/assets/images/right_bg.png) no-repeat;
+        transform-origin: right center;
+        background-image: url(../assets/images/right_bg.png);
 		&.slide_right {
 			animation: slideRight 2s linear;
 		}
@@ -192,9 +219,23 @@ const startMove = () => {
     position: absolute;
     width: 200px;
     height: 200px;
+    top: 20%;
     border-radius: 50%;
     overflow: hidden;
-	border: 10px solid #f7f7f7;
+    @keyframes opacity {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    &.opacity {
+        animation: opacity 2s;
+    }
+    &.none {
+        display: none;
+    }
     .avatar {
         height: 100%;
         width: auto;
