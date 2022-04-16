@@ -150,7 +150,7 @@ const startMove = () => {
         background-size: cover;
         background-repeat: no-repeat;
         .door_name {
-            margin-top: 65%;
+            margin-top: 45%;
             font-size: 60px;
             color: #fff;
         }
