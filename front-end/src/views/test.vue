@@ -5,7 +5,7 @@
             <span class="door_title">前端</span>
         </section>
 
-        <section class="door_right" v-if="state.showDoor" :class="{ slide_right: state.open }" @click.stop="slide">
+        <section class="door_right" v-if="state.showDoor" :class="{ slide_right: state.open }">
             <p class="door_name">钧</p>
             <span class="door_title">开发</span>
         </section>
@@ -25,9 +25,9 @@ const state = reactive({
     lastY: 0,
     iSpeedX: 0,
     iSpeedY: 0,
-    timer: null,
+    timer: void(0),
     move: false,
-    avatar: null,
+    avatar: void(0),
     showDoor: true,
     clickDoor: false, // 是否能点击门
     avatarClass: '', // 头像动态css
@@ -35,7 +35,10 @@ const state = reactive({
 
 onMounted(() => {
     nextTick(() => {
-        state.avatar = document.getElementById('avatar_wrapper')
+        let temp:HTMLElement = document.getElementById('avatar_wrapper') as HTMLElement
+        if (temp) {
+            state.avatar = temp
+        }
     })
 })
 
@@ -46,7 +49,7 @@ const openDoor = () => {
     }, 2000)
 }
 
-const onMousedown = ev => {
+const onMousedown = (ev: any) => {
     let disX = ev.pageX - state.avatar.offsetLeft
     let disY = ev.pageY - state.avatar.offsetTop
     document.onmousemove = function (moveEvent) {
