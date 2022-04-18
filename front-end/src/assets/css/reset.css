@@ -142,9 +142,7 @@ table {
 
 
 /* custom */
-
 a {
-    /*color: #7e8c8d;*/
     text-decoration: none;
     -webkit-backface-visibility: hidden;
 }
@@ -176,106 +174,10 @@ li {
 }
 
 @font-face {
-    font-family: Senty;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/SentyTEA.woff2');
-}
-
-@font-face {
-    font-family: akrobatBold;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/akrobat-bold.ttf');
-}
-
-@font-face {
-    font-family: PingFang;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/PingFang SC Regular.ttf');
-}
-
-@font-face {
-    font-family: PingFangMedium;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/PingFang Medium.ttf');
-}
-
-@font-face {
-    font-family: PingFangRegular;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/PingFang Regular.ttf');
-}
-
-@font-face {
-    font-family: PingFangBold;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/PingFang Bold.ttf');
-}
-
-@font-face {
-    font-family: regular;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/akrobat-regular.ttf');
-}
-
-@font-face {
-    font-family: RobotoMedium;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/Roboto-Medium.ttf');
-}
-
-@font-face {
-    font-family: RobotoRegular;
-    src: url('https://acme-public.oss-cn-beijing.aliyuncs.com/guoan/fonts/Roboto-Regular.ttf');
-}
-
-@font-face {
-    font-family: cabinsketch;
-    src: url('https://fonts.gstatic.com/s/cabinsketch/v17/QGY2z_kZZAGCONcK2A4bGOj0I_1Y5tjz.woff2');
-}
-@font-face {
     font-family: pinyin;
-    src: url('../fonts/Aa初恋微甜拼音体.ttf');
+    src: url('../fonts/pinyin.ttf');
 }
 
 .pinyin {
     font-family: pinyin;
-}
-.cabinsketch {
-    font-family: cabinsketch;
-}
-
-.PingFang {
-    font-family: PingFang;
-}
-
-.PingFangMedium {
-    font-family: PingFangMedium;
-}
-
-.PingFangRegular {
-    font-family: PingFangRegular;
-}
-
-.PingFangBold {
-    font-family: PingFangBold;
-}
-
-.regular {
-    font-family: regular;
-}
-
-.akrobatBold {
-    font-family: akrobatBold;
-}
-
-.Senty {
-    font-family: Senty;
-}
-
-.RobotoMedium {
-    font-family: RobotoMedium;
-}
-
-.RobotoRegular {
-    font-family: RobotoRegular;
-}
-
-.current.is-selected.is-today {
-    background: #fff !important;
-}
-
-.fc {
-    color: #2d3441;
 }
