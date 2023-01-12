@@ -10,8 +10,8 @@ const FtClient = tencentcloud.ft.v20200304.Client;
 // 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
 const clientConfig = {
     credential: {
-        secretId: 'AKID9KEsHTTLyLvRmxveSRJ5f5MTPAh1IOGs',
-        secretKey: 'Ui9PQUXTBfMvIRN6c2TijbHjzzoW1HK8',
+        secretId: 'AKID9KEsHTxveSRJ5f5MTPAh1IOGs',
+        secretKey: 'Ui9PQUXTBbHjzzoW1HK8',
     },
     region: 'ap-beijing',
     profile: {
