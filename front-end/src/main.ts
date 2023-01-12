@@ -9,6 +9,7 @@ import App from './App.vue'
 const app:any = createApp(App)
 
 app.use(router)
+app.use(Antd)
 
 app.mount('#app')
 

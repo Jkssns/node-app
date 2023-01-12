@@ -1,23 +1,26 @@
 <template>
     <div class="open_container pinyin">
         <section class="door_left" v-if="state.showDoor" :class="{ slide_left: state.open }">
-            <p class="door_name">张</p>
-            <span class="door_title">前端</span>
+            <!-- <p class="door_name">张</p> -->
+            <!-- <span class="door_title">前端</span> -->
         </section>
 
         <section class="door_right" v-if="state.showDoor" :class="{ slide_right: state.open }">
-            <p class="door_name">钧</p>
-            <span class="door_title">开发</span>
+            <!-- <p class="door_name">钧</p> -->
+            <!-- <span class="door_title">开发</span> -->
         </section>
 
         <div id="avatar_wrapper" :class="state.avatarClass" @mousedown="onMousedown" @click="onClick">
 			<img class="avatar" draggable="false" src="https://jkssns.oss-cn-hangzhou.aliyuncs.com/images/bear.jpg" alt="">
 		</div>
+
+        <audio src=""></audio>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, defineComponent, getCurrentInstance, onBeforeMount, onMounted, nextTick, reactive } from 'vue'
+import OSS from 'ali-oss';
 
 const state = reactive({
     open: false,
@@ -34,6 +37,17 @@ const state = reactive({
 })
 
 onMounted(() => {
+
+const client = new OSS({ 
+  region: 'oss-cn-hangzhou',
+  accessKeyId: 'LTAI5tCSqgcqMK2UfuNShpKs',
+  accessKeySecret: 'VHzRvb9SWGMcYn9jRO4dmOaXBhzdjt',
+  bucket: 'jkssns',
+});
+
+let url;
+url = client.signatureUrl('/images/bear.jpg', {expires: 86400});
+console.log(url);
     nextTick(() => {
         let temp:HTMLElement = document.getElementById('avatar_wrapper') as HTMLElement
         if (temp) {
@@ -144,16 +158,16 @@ const startMove = () => {
         width: 50%;
         height: 100%;
         box-sizing: border-box;
-		background-size: cover;
         transform-origin: left center;
         transform-style: preserve-3d;
         backface-visibility: hidden;
         transition: transform 3s ease;
         background-color: rgba(0, 0, 0, 0.85);
-        background-size: cover;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
+        user-select: none;
         .door_name {
-            margin-top: 45%;
+            margin-top: 45vh;
             font-size: 60px;
             color: #fff;
         }
@@ -165,6 +179,7 @@ const startMove = () => {
     }
     .door_left {
         text-align: right;
+        transform-origin: left center;
         background-image: url(../assets/images/left_bg.png);
 		&.slide_left {
 			animation: slideLeft 2s linear;
@@ -225,6 +240,8 @@ const startMove = () => {
     top: 20%;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
     @keyframes opacity {
         0% {
             opacity: 1;
@@ -240,6 +257,7 @@ const startMove = () => {
         display: none;
     }
     .avatar {
+        user-select: none;
         height: 100%;
         width: auto;
     }

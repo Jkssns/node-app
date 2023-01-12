@@ -9,7 +9,6 @@ export default defineComponent({
     name: 'App',
     setup() {
         const $route = useRoute()
-        console.log("$route::: ", $route);
     }
 })
 </script>

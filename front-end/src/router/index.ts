@@ -9,7 +9,7 @@ import test from '@/views/test.vue'
 export const routes:any = [
     {
         path: '/',
-        redirect: '/test',
+        redirect: '/face',
     },
     {
         path: '/resume',
@@ -18,6 +18,10 @@ export const routes:any = [
     {
         path: '/test',
         component: () => import('@/views/test.vue'),
+    },
+    {
+        path: '/face',
+        component: () => import('@/views/Face.vue'),
     },
 ]
 

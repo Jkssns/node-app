@@ -1,5 +1,5 @@
-var redis = require('redis')
-const client = redis.createClient(6379, '127.0.0.1');
+// var redis = require('redis')
+// const client = redis.createClient(6379, '127.0.0.1');
 const util = require('util');
 
 global.code = (code, data, msg) => {
@@ -33,4 +33,4 @@ global.code = (code, data, msg) => {
 	}
 }
 
-global.redis = client
+// global.redis = client

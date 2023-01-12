@@ -3,13 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('./server-modules/mongodb');
+// var mongoose = require('./server-modules/mongodb');
 var Global = require('./utils/global')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var commonRouter = require('./routes/common');
 var fileRouter = require('./routes/file');
+var faceRouter = require('./routes/face');
 
 var app = express();
 app.all('*', function (req, res, next) {
@@ -39,6 +40,7 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/common', commonRouter);
 app.use('/view', fileRouter);
+app.use('/face', faceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
