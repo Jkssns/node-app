@@ -37,17 +37,6 @@ const state = reactive({
 })
 
 onMounted(() => {
-
-const client = new OSS({ 
-  region: 'oss-cn-hangzhou',
-  accessKeyId: 'LTAI5tCSqgcqMK2UfuNShpKs',
-  accessKeySecret: 'VHzRvb9SWGMcYn9jRO4dmOaXBhzdjt',
-  bucket: 'jkssns',
-});
-
-let url;
-url = client.signatureUrl('/images/bear.jpg', {expires: 86400});
-console.log(url);
     nextTick(() => {
         let temp:HTMLElement = document.getElementById('avatar_wrapper') as HTMLElement
         if (temp) {
