@@ -2,33 +2,37 @@
 // const client = redis.createClient(6379, '127.0.0.1');
 const util = require('util');
 
-global.code = (code, data, msg) => {
+global.handleMySqlErr = (err) => {
+	throw err;
+}
+
+global.code = (code, data, message) => {
 	switch (code) {
 		case 200:
 			return {
 				code,
-				msg: 'ok',
+				message: 'ok',
 				data,
 			}
 		case 400:
 			return {
 				code,
-				msg: '参数错误',
+				message: '参数错误',
 			}
 		case 401:
 			return {
 				code,
-				msg: '暂无权限',
+				message: '暂无权限',
 			}
 		case 404:
 			return {
 				code, 
-				msg: 'Not Found',
+				message: 'Not Found',
 			}
 		case 500:
 			return {
 				code,
-				msg,
+				message,
 			}
 	}
 }

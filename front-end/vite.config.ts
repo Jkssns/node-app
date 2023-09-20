@@ -9,7 +9,7 @@ function _resolve(dir) {
 // https://vitejs.dev/config/
 export default ({mode}) => {
 	return defineConfig({
-		base: mode === 'development' ? '/' : '/node-app/',
+		base: '/',
 		plugins: [
 			vue(),
 		],
@@ -22,7 +22,7 @@ export default ({mode}) => {
 			]
 		},
 		server: {
-			port: 8080,
+			port: 5100,
 			host: '0.0.0.0',
 			proxy: {
 				// '/api': {

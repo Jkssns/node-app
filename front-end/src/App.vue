@@ -24,5 +24,6 @@ li {
 #app {
     width: 100%;
     height: 100%;
+    background-color: #1a1a1d;
 }
 </style>

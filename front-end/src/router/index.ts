@@ -1,19 +1,9 @@
-import {
-    createRouter,
-    createWebHistory,
-    createWebHashHistory,
-} from 'vue-router'
 import Resume from '@/views/Resume.vue'
-import test from '@/views/test.vue'
 
 export const routes:any = [
     {
         path: '/',
         redirect: '/screenshot',
-    },
-    {
-        path: '/resume',
-        component: Resume,
     },
     {
         path: '/test',
@@ -29,17 +19,17 @@ export const routes:any = [
     },
 ]
 
-const router = createRouter({
-    history: createWebHashHistory(),
-    // history: createWebHistory(),
-    routes,
-    // scrollBehavior(to, from, savedPosition) {
-    //     return {
-    //       el: document.getElementById('globalContainer'),
-    //       top: 0,
-    //     }
-    // },
-})
+// const router = createRouter({
+//     history: createWebHashHistory(),
+//     // history: createWebHistory(),
+//     routes,
+//     // scrollBehavior(to, from, savedPosition) {
+//     //     return {
+//     //       el: document.getElementById('globalContainer'),
+//     //       top: 0,
+//     //     }
+//     // },
+// })
 
 
-export default router
+// export default router

@@ -1,4 +1,6 @@
 <template>
+    <router-link to="/resume">6666666</router-link>
+
     <div class="open_container pinyin">
         <section class="door_left" v-if="state.showDoor" :class="{ slide_left: state.open }">
             <!-- <p class="door_name">张</p> -->

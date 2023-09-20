@@ -26,6 +26,7 @@
         like('post')
     }
 
+
 </script>
 
 <style lang="scss" scoped>

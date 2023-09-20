@@ -4,13 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // var mongoose = require('./server-modules/mongodb');
-var Global = require('./utils/global')
+var Global = require('./utils/global');
+// var connection = require('./mysql/connection');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var commonRouter = require('./routes/common');
 var fileRouter = require('./routes/file');
 var faceRouter = require('./routes/face');
+var fieldRouter = require('./routes/field-mysql');
+
+
+//关闭连接
+//   connection.end(function(err){
+//     if(err){
+//       return;
+//     }
+//     console.log("[connection end] succeed!");
+//   })
 
 var app = express();
 app.all('*', function (req, res, next) {
@@ -32,30 +43,21 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+// app.use('/user', usersRouter);
 app.use('/common', commonRouter);
 app.use('/view', fileRouter);
 app.use('/face', faceRouter);
+app.use('/user', fieldRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    next(createError(404));
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.send(global.code(err.status || 500));
-    console.log('err::: ', err);
-});
+app.use(function(err,req,res,next){
+    res.send(code(500));
+    next();
+ })
 
 module.exports = app;

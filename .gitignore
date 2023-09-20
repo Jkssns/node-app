@@ -1,0 +1,7 @@
+node_modules
+node_cache
+.DS_Store
+dist
+dist-ssr
+*.local
+front-end/.vite-ssg-temp*
